@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Портфолио Данила</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,200&family=Proxima+Nova:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Exo 2', sans-serif;
       background: linear-gradient(to right, #f9f9f9, #f3f3f3);
-      color: #2b2c34;
+      color: #2e2e38;
       overflow-x: hidden;
     }
 
@@ -35,16 +35,22 @@
     .text {
       max-width: 50vw;
       padding-left: 60px;
+      font-family: 'Exo 2', sans-serif;
+      font-style: italic;
+      font-weight: 200;
     }
 
     .text h1 {
+      font-family: 'Proxima Nova', sans-serif;
+      font-style: italic;
+      font-weight: 700;
       font-size: 2.8rem;
       margin-bottom: 20px;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 2px solid #2b2c34;
+      border-right: 2px solid #2e2e38;
       width: 0;
-      color: #2b2c34;
+      color: #1f1f25;
       animation: typing 3s steps(40, end) forwards, blink 0.6s step-end infinite;
     }
 
@@ -76,13 +82,13 @@
     }
 
     .cat {
-      width: 100px;
-      margin: 20px 0;
+      width: 160px;
+      margin: 30px 0;
       transition: transform 0.3s ease;
     }
 
     .cat:hover {
-      transform: scale(1.05) rotate(-2deg);
+      transform: scale(1.1) rotate(-2deg);
     }
 
     .floating-icon {
@@ -93,12 +99,12 @@
 
     .facebook-icon {
       top: 10%;
-      left: 5%;
+      right: 5%;
     }
 
     .zuckerberg-icon {
       bottom: 10%;
-      right: 5%;
+      left: 5%;
     }
 
     @keyframes float {
@@ -129,10 +135,11 @@
   <section>
     <!-- Плавающие иконки -->
     <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="floating-icon facebook-icon" />
-    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Mark_Zuckerberg_F8_2019_Keynote_%28cropped_2%29.jpg" alt="Цукерберг" class="floating-icon zuckerberg-icon" />
+
     <!-- Аватар -->
     <div class="avatar">
-      <img src="./IMG_2342.jpg" alt="Данил" />
+      <img src="./IMG_2342.jpeg" alt="Данил" />
     </div>
 
     <!-- Текст -->
