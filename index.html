@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Портфолио Данила</title>
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,200&family=Proxima+Nova:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,200&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -35,32 +35,24 @@
     .text {
       max-width: 50vw;
       padding-left: 60px;
-      font-family: 'Exo 2', sans-serif;
-      font-style: italic;
-      font-weight: 200;
     }
 
     .text h1 {
       font-family: 'Proxima Nova', sans-serif;
       font-style: italic;
-      font-weight: 700;
+      font-weight: bold;
       font-size: 2.8rem;
       margin-bottom: 20px;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 2px solid #2e2e38;
       width: 0;
-      color: #1f1f25;
-      animation: typing 3s steps(40, end) forwards, blink 0.6s step-end infinite;
+      color: #2e2e38;
+      animation: typing 1.8s steps(40, end) forwards;
     }
 
     @keyframes typing {
       from { width: 0; }
       to { width: 100%; }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
     }
 
     .fade-in {
@@ -69,10 +61,11 @@
       animation: fadeIn 1s ease forwards;
     }
 
-    .fade-in.delay-1 { animation-delay: 3.5s; }
-    .fade-in.delay-2 { animation-delay: 4.2s; }
-    .fade-in.delay-3 { animation-delay: 4.9s; }
-    .fade-in.delay-4 { animation-delay: 5.6s; }
+    .fade-in.delay-1 { animation-delay: 2s; }
+    .fade-in.delay-2 { animation-delay: 2.7s; }
+    .fade-in.delay-3 { animation-delay: 3.4s; }
+    .fade-in.delay-4 { animation-delay: 4.1s; }
+    .fade-in.delay-5 { animation-delay: 4.8s; }
 
     @keyframes fadeIn {
       to {
@@ -83,12 +76,12 @@
 
     .cat {
       width: 160px;
-      margin: 30px 0;
+      margin: 20px 0;
       transition: transform 0.3s ease;
     }
 
     .cat:hover {
-      transform: scale(1.1) rotate(-2deg);
+      transform: scale(1.05) rotate(-2deg);
     }
 
     .floating-icon {
@@ -100,11 +93,6 @@
     .facebook-icon {
       top: 10%;
       right: 5%;
-    }
-
-    .zuckerberg-icon {
-      bottom: 10%;
-      left: 5%;
     }
 
     @keyframes float {
@@ -133,13 +121,12 @@
 </head>
 <body>
   <section>
-    <!-- Плавающие иконки -->
+    <!-- Плавающая иконка Facebook -->
     <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="floating-icon facebook-icon" />
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Mark_Zuckerberg_F8_2019_Keynote_%28cropped_2%29.jpg" alt="Цукерберг" class="floating-icon zuckerberg-icon" />
 
     <!-- Аватар -->
     <div class="avatar">
-      <img src="./IMG_2342.jpeg" alt="Данил" />
+      <img src="./IMG_2342.jpg" alt="Данил" />
     </div>
 
     <!-- Текст -->
@@ -147,13 +134,13 @@
       <h1>Привет, мой будущий коллега!</h1>
 
       <p class="fade-in delay-1">Меня зовут Данил, мне 25 лет<br> Живу в г.Таганрог (готов к релокейту)<br>Мой путь медиабайера начался с 2022 года</p>
-      <p class="fade-in delay-2">Да, я год запускал схемный трафик… <br> Мне за это немного стыдно.</p>
-      <img src="./mimi.jpg" alt="котик" class="cat fade-in delay-3" />
-      <p class="fade-in delay-3">
+      <p class="fade-in delay-2">
         За плечами — solo-запуски, мини-команда, работа в крупной структуре, рост с junior до байера за 4 месяца. <br>
         Много где был. Много чего пробовал, в следующем блоке постарался все тезисно рассказать
       </p>
-      <p class="fade-in delay-4"><strong>🎯 Ищу команду, где можно делать крутые результаты, а не только обходить модерацию</strong></p>
+      <p class="fade-in delay-3"><strong>🎯 Ищу команду, где можно делать крутые результаты, а не только обходить модерацию</strong></p>
+      <p class="fade-in delay-4">Да, я год запускал схемный трафик…<br>Мне за это немного стыдно.</p>
+      <img src="./mimi.jpg" alt="котик" class="cat fade-in delay-5" />
     </div>
   </section>
 </body>
