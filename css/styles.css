@@ -14,13 +14,15 @@ body {
       position: relative;
     }
 
-    .avatar {
+ .avatar {
       max-width: 40vw;
+      border-radius: 50%;
+      overflow: hidden;
     }
 
-    .avatar img {
+.avatar img {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 50%;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
