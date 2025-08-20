@@ -1,95 +1,102 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Портфолио Данила</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Inter', sans-serif;
-      background: #f9f9f9;
-      color: #222;
-      overflow-x: hidden;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
     }
 
-    .intro {
+    section {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 100vh;
-      padding: 40px;
-      position: relative;
+      padding: 80px 5vw;
     }
 
     .avatar {
-      flex: 1;
-      max-width: 50%;
+      max-width: 40vw;
     }
 
     .avatar img {
       width: 100%;
-      max-width: 600px;
-      border-radius: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .text-block {
-      flex: 1;
-      max-width: 50%;
+    .text {
+      max-width: 50vw;
       padding-left: 60px;
-      font-size: 20px;
-      line-height: 1.6;
     }
 
-    .text-block h1 {
-      font-size: 32px;
+    .text h1 {
+      font-size: 2.5rem;
       margin-bottom: 20px;
     }
 
-    .text-block img.cat {
-      width: 160px;
+    .text p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .cat {
+      width: 100px;
       margin: 20px 0;
+      transition: transform 0.3s ease;
     }
 
-    .icon-fb {
-      position: absolute;
-      bottom: 20px;
-      right: 30px;
-      width: 32px;
-      height: 32px;
-      animation: float 4s ease-in-out infinite;
+    .cat:hover {
+      transform: scale(1.05) rotate(-2deg);
     }
 
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
+    @media (max-width: 900px) {
+      section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .text {
+        padding-left: 0;
+        max-width: 90vw;
+      }
+
+      .avatar {
+        max-width: 80vw;
+        margin-bottom: 40px;
+      }
     }
   </style>
 </head>
 <body>
-  <section style="display: flex; align-items: center; justify-content: space-between; background-color: #f7f7f7; padding: 80px 5vw; font-family: 'Segoe UI', sans-serif;">
-  <!-- Аватар -->
-  <div style="flex: 1; max-width: 40vw;">
-    <img src="./IMG_2342.jpeg" alt="Данил" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-  </div>
+  <section>
+    <!-- Аватар -->
+    <div class="avatar">
+      <img src="./IMG_2342.jpeg" alt="Данил" />
+    </div>
 
-  <!-- Текст -->
-  <div style="flex: 1; padding-left: 60px;">
-    <h1 style="font-size: 2.5rem; margin-bottom: 20px;">Привет, мой будущий коллега!</h1>
-    <p>Меня зовут Данил, я в баинге с 2022 года</p>
-    <br>
-    <p>Да, я год запускал схемный трафик… <br>Мне за это немного стыдно.</p>
-    <img src="./mimi.jpg" alt="котик" style="width: 100px; margin: 20px 0;">
-    <p>За плечами — solo-запуски, мини-команда, работа в крупной структуре, рост с junior до байера за 4 месяца. <br>Много где был. Много чего пробовал, в следующем блоке постарался все тезисно рассказать</p>
-    <p style="margin-top: 20px;">🎯 Ищу команду, где можно делать крутые результаты, а не только обходить модерацию</p>
-  </div>
-</section>
+    <!-- Текст -->
+    <div class="text">
+      <h1>Привет, мой будущий коллега!</h1>
+      <p>Меня зовут Данил, я в баинге с 2022 года</p>
+      <br />
+      <p>Да, я год запускал схемный трафик… <br> Мне за это немного стыдно.</p>
+      <img src="./mimi.jpg" alt="котик" class="cat" />
+      <p>
+        За плечами — solo-запуски, мини-команда, работа в крупной структуре, рост с junior до байера за 4 месяца. <br>
+        Много где был. Много чего пробовал, в следующем блоке постарался все тезисно рассказать
+      </p>
+      <p class="highlight">🎯 Ищу команду, где можно делать крутые результаты, а не только обходить модерацию</p>
+    </div>
+  </section>
 </body>
 </html>
