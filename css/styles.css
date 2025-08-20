@@ -140,9 +140,9 @@ body {
       }
 
       .floating-icon {
-        position: fixed;
-        top: 20px;
+        position: absolute;
         width: 36px;
+        transition: transform 0.3s ease;
       }
 
       .facebook-icon {
