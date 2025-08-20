@@ -179,18 +179,3 @@ section {
     max-width: 80vw;
     margin-bottom: 40px;
   }
-
-  .floating-icon {
-    left: 10px;
-    width: 30px;
-    height: 30px;
-  }
-
-  .hh-icon {
-    top: 20px;
-  }
-
-  .facebook-icon {
-    top: 70px;
-  }
-}
