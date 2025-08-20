@@ -31,32 +31,64 @@
     .text {
       max-width: 50vw;
       padding-left: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
     }
 
     .text h1 {
       font-size: 2.5rem;
-      margin-bottom: 20px;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #000;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.6s step-end infinite;
     }
 
-    .text p {
-      font-size: 20px;
-      line-height: 1.6;
-      margin-bottom: 16px;
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
     }
 
-    .highlight {
-      font-weight: bold;
-      margin-top: 20px;
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .fade-in.delay-1 { animation-delay: 3.5s; }
+    .fade-in.delay-2 { animation-delay: 4.2s; }
+    .fade-in.delay-3 { animation-delay: 4.9s; }
+    .fade-in.delay-4 { animation-delay: 5.6s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(10px); }
     }
 
     .cat {
       width: 100px;
-      margin: 20px 0;
+      margin: 10px 0 0;
+      align-self: flex-start;
       transition: transform 0.3s ease;
     }
 
     .cat:hover {
       transform: scale(1.05) rotate(-2deg);
+    }
+
+    .text p {
+      margin: 0;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    .text p strong {
+      font-size: 20px;
     }
 
     @media (max-width: 900px) {
@@ -74,6 +106,10 @@
         max-width: 80vw;
         margin-bottom: 40px;
       }
+
+      .text p {
+        text-align: left;
+      }
     }
   </style>
 </head>
@@ -81,21 +117,21 @@
   <section>
     <!-- Аватар -->
     <div class="avatar">
-      <img src="./IMG_2342.jpg" alt="Данил" />
+      <img src="./IMG_2342.jpeg" alt="Данил" />
     </div>
 
     <!-- Текст -->
     <div class="text">
       <h1>Привет, мой будущий коллега!</h1>
-      <p>Меня зовут Данил, я в баинге с 2022 года</p>
-      <br />
-      <p>Да, я год запускал схемный трафик… <br> Мне за это немного стыдно.</p>
-      <img src="./mimi.jpg" alt="котик" class="cat" />
-      <p>
+
+      <p class="fade-in delay-1">Меня зовут Данил, мне 25 лет<br> Живу в г.Таганрог (готов к релокейту)<br>Мой путь медиабайера начался с 2022 года</p>
+      <p class="fade-in delay-2">Да, я год запускал схемный трафик… <br> Мне за это немного стыдно.</p>
+      <img src="./mimi.jpg" alt="котик" class="cat fade-in delay-3" />
+      <p class="fade-in delay-3">
         За плечами — solo-запуски, мини-команда, работа в крупной структуре, рост с junior до байера за 4 месяца. <br>
         Много где был. Много чего пробовал, в следующем блоке постарался все тезисно рассказать
       </p>
-      <p class="highlight">🎯 Ищу команду, где можно делать крутые результаты, а не только обходить модерацию</p>
+      <p class="fade-in delay-4"><strong>🎯 Ищу команду, где можно делать крутые результаты, а не только обходить модерацию</strong></p>
     </div>
   </section>
 </body>
