@@ -110,22 +110,33 @@ section {
   margin-bottom: 10px;
 }
 
-/* === Плавающие иконки === */
+/* Блок с иконками должен быть относительным родителем */
+section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 5vw;
+  position: relative; /* <-- это важно */
+}
+
+/* Общий стиль иконок */
 .floating-icon {
   width: 40px;
   height: 40px;
-  position: fixed;        /* ← если хочешь, чтобы они были всегда на экране */
-  left: 40px;
+  position: absolute; /* <-- не fixed */
+  left: -60px;         /* отступ влево от секции */
   z-index: 10;
   opacity: 0;
   transform: translateY(-10px);
   animation: iconFadeIn 0.8s ease forwards;
+  transition: transform 0.3s ease;
 }
 
 .floating-icon:hover {
   transform: scale(1.2);
 }
 
+/* Индивидуальные позиции */
 .hh-icon {
   top: 40px;
   animation-delay: 1s;
@@ -134,6 +145,14 @@ section {
 .facebook-icon {
   top: 100px;
   animation-delay: 1.5s;
+}
+
+/* Анимация появления */
+@keyframes iconFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes iconFadeIn {
