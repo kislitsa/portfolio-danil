@@ -4,143 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Портфолио Данила</title>
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,200&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Exo 2', sans-serif;
-      background: linear-gradient(to right, #f9f9f9, #f3f3f3);
-      color: #2e2e38;
-      overflow-x: hidden;
-    }
-
-    section {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 80px 5vw;
-      position: relative;
-    }
-
-    .avatar {
-      max-width: 40vw;
-    }
-
-    .avatar img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .text {
-      max-width: 50vw;
-      padding-left: 60px;
-    }
-
-    .text h1 {
-      font-family: 'Proxima Nova', sans-serif;
-      font-style: italic;
-      font-weight: bold;
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      color: #2e2e38;
-      animation: typing 1.8s steps(40, end) forwards;
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeIn 1s ease forwards;
-    }
-
-    .fade-in.delay-1 { animation-delay: 2s; }
-    .fade-in.delay-2 { animation-delay: 2.7s; }
-    .fade-in.delay-3 { animation-delay: 3.4s; }
-    .fade-in.delay-4 { animation-delay: 4.1s; }
-    .fade-in.delay-5 { animation-delay: 4.8s; }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .cat {
-      width: 160px;
-      margin: 20px 0;
-      transition: transform 0.3s ease;
-    }
-
-    .cat:hover {
-      transform: scale(1.05) rotate(-2deg);
-    }
-
-    .floating-icon {
-      position: absolute;
-      width: 60px;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .facebook-icon {
-      top: 10%;
-      right: 5%;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0); }
-    }
-
-    @media (max-width: 900px) {
-      section {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .text {
-        padding-left: 0;
-        max-width: 90vw;
-      }
-
-      .avatar {
-        max-width: 80vw;
-        margin-bottom: 40px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,200&family=Proxima+Nova:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
   <section>
-    <!-- Плавающая иконка Facebook -->
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="floating-icon facebook-icon" />
+    <!-- Плавающие иконки -->
+    <img src="assets/hh.png" alt="HH.ru" class="floating-icon hh-icon" />
+    <img src="assets/fb.png" alt="Facebook" class="floating-icon facebook-icon" />
 
     <!-- Аватар -->
     <div class="avatar">
-      <img src="./IMG_2342.jpg" alt="Данил" />
+      <img src="assets/IMG_2342.jpg" alt="Данил" />
     </div>
 
     <!-- Текст -->
     <div class="text">
       <h1>Привет, мой будущий коллега!</h1>
+      <p class="fade-in delay-1">Меня зовут Данил, мне 25 лет<br>Живу в г.Таганрог, готов к релокейту<br>Мой путь медиабайера начался с 2022 года</p>
+      <p class="fade-in delay-2">За плечами — solo-запуски, мини-команда, работа в крупной структуре, рост с junior до байера за 4 месяца в большой компании.<br>Много где был, много чего пробовал. В следующем блоке постарался все тезисно рассказать о своем опыте</p>
+      <p class="fade-in delay-3 highlight">🎯 Ищу команду, где можно делать крутые результаты, а не только обходить модерацию</p>
 
-      <p class="fade-in delay-1">Меня зовут Данил, мне 25 лет<br> Живу в г.Таганрог (готов к релокейту)<br>Мой путь медиабайера начался с 2022 года</p>
-      <p class="fade-in delay-2">
-        За плечами — solo-запуски, мини-команда, работа в крупной структуре, рост с junior до байера за 4 месяца. <br>
-        Много где был. Много чего пробовал, в следующем блоке постарался все тезисно рассказать
-      </p>
-      <p class="fade-in delay-3"><strong>🎯 Ищу команду, где можно делать крутые результаты, а не только обходить модерацию</strong></p>
-      <p class="fade-in delay-4">Да, я год запускал схемный трафик…<br>Мне за это немного стыдно.</p>
-      <img src="./mimi.jpg" alt="котик" class="cat fade-in delay-5" />
+      <div class="shame-text fade-in delay-4">
+        <p>Да, я год запускал схемный трафик…<br>Мне за это немного стыдно.</p>
+        <img src="assets/mimi.jpg" alt="котик" class="cat" />
+        <a href="https://t.me/ksdanil" class="cta-button">Взять Даню к себе в команду</a>
+      </div>
     </div>
   </section>
 </body>
