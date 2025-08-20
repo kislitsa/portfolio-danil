@@ -1,181 +1,153 @@
-/* === Общие стили === */
 body {
-  margin: 0;
-  font-family: 'Exo 2', sans-serif;
-  background: linear-gradient(to right, #f9f9f9, #f3f3f3);
-  color: #2b2c34;
-  overflow-x: hidden;
-}
+      margin: 0;
+      font-family: 'Exo 2', sans-serif;
+      background: linear-gradient(to right, #f9f9f9, #f3f3f3);
+      color: #2b2c34;
+      overflow-x: hidden;
+    }
 
-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 80px 5vw;
-  position: relative;
-}
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 5vw;
+      position: relative;
+    }
 
-.avatar {
-  max-width: 40vw;
-  border-radius: 50%;
-  overflow: hidden;
-}
+    .avatar {
+      max-width: 40vw;
+    }
 
-.avatar img {
-  width: 100%;
-  border-radius: 50%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
+    .avatar img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
 
-.text {
-  max-width: 50vw;
-  padding-left: 60px;
-}
+    .text {
+      max-width: 50vw;
+      padding-left: 60px;
+    }
 
-.text h1 {
-  font-size: 2.8rem;
-  font-family: 'Proxima Nova', sans-serif;
-  font-style: italic;
-  margin-bottom: 20px;
-  color: #2b2c34;
-}
+    .text h1 {
+      font-size: 2.8rem;
+      font-family: 'Proxima Nova', sans-serif;
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #2b2c34;
+    }
 
-/* === Анимация появления === */
-.fade-in {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeIn 1s ease forwards;
-}
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 1s ease forwards;
+    }
 
-.fade-in.delay-1 { animation-delay: 0.5s; }
-.fade-in.delay-2 { animation-delay: 1s; }
-.fade-in.delay-3 { animation-delay: 1.5s; }
-.fade-in.delay-4 { animation-delay: 2s; }
-.fade-in.delay-5 { animation-delay: 2.5s; }
+    .fade-in.delay-1 { animation-delay: 0.5s; }
+    .fade-in.delay-2 { animation-delay: 1s; }
+    .fade-in.delay-3 { animation-delay: 1.5s; }
+    .fade-in.delay-4 { animation-delay: 2s; }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-/* === Стилизованный котик === */
-.cat {
-  width: 140px;
-  margin: 30px auto 40px;
-  display: block;
-  transition: transform 0.3s ease;
-  animation: fadeIn 1s ease forwards;
-  animation-delay: 2.5s;
-  opacity: 0;
-}
+    .cat {
+      width: 140px;
+      margin: 30px auto 40px;
+      display: block;
+      transition: transform 0.3s ease;
+    }
 
-.cat:hover {
-  transform: scale(1.05) rotate(-2deg);
-}
+    .cat:hover {
+      transform: scale(1.05) rotate(-2deg);
+    }
 
-/* === Кнопка CTA === */
-.cta-button {
-  display: inline-block;
-  padding: 12px 20px;
-  margin: 20px auto 0;
-  font-size: 16px;
-  border: 2px solid #2b2c34;
-  border-radius: 8px;
-  background-color: transparent;
-  text-decoration: none;
-  color: #2b2c34;
-  transition: 0.3s ease;
-  display: block;
-  text-align: center;
-}
+    .floating-icon {
+      position: absolute;
+      width: 40px;
+      animation: float 6s ease-in-out infinite;
+    }
 
-.cta-button:hover {
-  background-color: #2b2c34;
-  color: #fff;
-}
+    .facebook-icon {
+      top: 70px;
+      right: 100px;
+    }
 
-/* === Акцентный текст === */
-.highlight {
-  font-weight: bold;
-  color: #e63946;
-  margin-bottom: 60px;
-}
+    .hh-icon {
+      top: 70px;
+      right: 150px;
+    }
 
-/* === Подпись "стыдно" === */
-.shame-text {
-  text-align: center;
-  margin-top: 100px;
-  margin-bottom: 10px;
-}
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
 
-/* Блок с иконками должен быть относительным родителем */
-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 80px 5vw;
-  position: relative; /* <-- это важно */
-}
+    .cta-button {
+      display: inline-block;
+      padding: 12px 20px;
+      margin: 20px auto 0;
+      font-size: 16px;
+      border: 2px solid #2b2c34;
+      border-radius: 8px;
+      background-color: transparent;
+      text-decoration: none;
+      color: #2b2c34;
+      transition: 0.3s ease;
+      display: block;
+      text-align: center;
+    }
 
-/* Общий стиль иконок */
-.floating-icon {
-  width: 40px;
-  height: 40px;
-  position: absolute; /* <-- не fixed */
-  left: -60px;         /* отступ влево от секции */
-  z-index: 10;
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: iconFadeIn 0.8s ease forwards;
-  transition: transform 0.3s ease;
-}
+    .cta-button:hover {
+      background-color: #2b2c34;
+      color: #fff;
+    }
 
-.floating-icon:hover {
-  transform: scale(1.2);
-}
+    .highlight {
+      font-weight: bold;
+      color: #e63946;
+      margin-bottom: 60px;
+    }
 
-/* Индивидуальные позиции */
-.hh-icon {
-  top: 40px;
-  animation-delay: 1s;
-}
+    .shame-text {
+      text-align: center;
+      margin-top: 100px;
+      margin-bottom: 10px;
+    }
 
-.facebook-icon {
-  top: 100px;
-  animation-delay: 1.5s;
-}
+    @media (max-width: 900px) {
+      section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 5vw;
+      }
 
-/* Анимация появления */
-@keyframes iconFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+      .text {
+        padding-left: 0;
+        max-width: 90vw;
+      }
 
-@keyframes iconFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+      .avatar {
+        max-width: 80vw;
+        margin-bottom: 40px;
+      }
 
-/* === Адаптив === */
-@media (max-width: 900px) {
-  section {
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 5vw;
-  }
+      .floating-icon {
+        position: fixed;
+        top: 20px;
+        width: 36px;
+      }
 
-  .text {
-    padding-left: 0;
-    max-width: 90vw;
-  }
+      .facebook-icon {
+        right: 60px;
+      }
 
-  .avatar {
-    max-width: 80vw;
-    margin-bottom: 40px;
-  }
+      .hh-icon {
+        right: 110px;
+      }
+    }
