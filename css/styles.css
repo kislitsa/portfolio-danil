@@ -911,3 +911,34 @@ section {
 @media (max-width: 420px) {
   .timeline__badge img { width: 80px; }
 }
+/* Заголовок блока softskill — сделаем его якорем для подсказки */
+.softskill__head{
+  position: relative;            /* <- теперь .softskill__note будет ориентироваться на этот блок */
+  display: block;                /* можно оставить как есть; главное — position */
+}
+
+/* Подсказка по умолчанию (десктоп) */
+.softskill__note{
+  position: absolute;
+  top: 0;                        /* по верхнему краю заголовка */
+  right: 0;                      /* прижать к правому краю */
+  font-size: .9rem;
+  opacity: .6;
+}
+
+/* Мобильная правка, чтобы точно не уезжала */
+@media (max-width: 768px){
+  .softskill__note{
+    top: 2px;                    /* чуть ниже, чтобы не прилипало к тексту */
+    right: 12px;                 /* отступ от правого */
+    font-size: .8rem;            /* компактней */
+    opacity: .7;
+    text-align: right;
+  }
+  /* заголовок по центру, как и было по дизайну */
+  .softskill__head .kicker{
+    margin-top: 8px;             /* если нужно — подними/опусти заголовок */
+    text-align: center;
+    width: 100%;
+  }
+}
