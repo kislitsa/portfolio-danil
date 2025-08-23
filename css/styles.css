@@ -1,1 +1,731 @@
-css/styles.css
+/* =========================
+   Base / Tokens
+   ========================= */
+
+:root {
+  --bg-grad-from: #f9f9f9;
+  --bg-grad-to:   #f3f3f3;
+  --text-main:    #2b2c34;
+  --text-muted:   #666;
+  --line-soft-1:  #e9e9e9;
+  --line-soft-2:  #ddd;
+  --accent-red:   #e63946;
+  --shadow-soft:  0 6px 16px rgba(0, 0, 0, .18);
+  --shadow-card:  0 10px 24px rgba(0, 0, 0, .15);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Exo 2', sans-serif;
+  background: linear-gradient(to right, var(--bg-grad-from), var(--bg-grad-to));
+  color: var(--text-main);
+  overflow-x: hidden; /* no horizontal scroll on wide media */
+}
+
+section {
+  position: relative;
+  padding: 10px 5vw;
+}
+
+/* =========================
+   Header
+   ========================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5vw;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;   /* меню по центру */
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 15px 20px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0;
+  transition: all .2s ease-in-out;
+}
+
+.nav a:hover {
+  background-color: rgba(0, 0, 0, .05);
+  color: #000;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons img {
+  width: 28px;
+  height: 28px;
+}
+
+/* =========================
+   Intro (hero)
+   ========================= */
+
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;          /* вместо «магических» margin */
+  flex-wrap: nowrap;
+}
+
+.avatar {
+  max-width: 40vw;
+  border-radius: 70%;
+  overflow: hidden;
+  /* позиционирование под текущий макет */
+  margin-top: -50px;  /* поднимаем аватар */
+  margin-left: 80px;   /* смещаем вправо */
+}
+
+.avatar img {
+  width: 80%;
+  border-radius: 10%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+}
+
+.text {
+  max-width: 50vw;
+  padding-left: 0;
+  margin-top: 150px;  /* сдвиг вниз под макет */
+  margin-left: 1px;   /* минимальный сдвиг вправо */
+}
+
+.text h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-style: italic;
+  margin: 0 0 20px;
+  color: var(--text-main);
+}
+
+/* Анимации появления */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 1s ease forwards;
+}
+
+.fade-in.delay-1 { animation-delay: 0.3s; }
+.fade-in.delay-2 { animation-delay: 0.5s; }
+.fade-in.delay-3 { animation-delay: 0.5s; }
+.fade-in.delay-4 { animation-delay: 0.5s; }
+.fade-in.delay-5 { animation-delay: 0.5s; }
+.fade-in.delay-6 { animation-delay: 1s; }
+
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Вспомогательные элементы в интро */
+
+.cat {
+  width: 140px;
+  margin: 30px auto 40px;
+  display: block;
+  transition: transform .3s ease;
+}
+
+.cat:hover { transform: scale(1.05) rotate(-2deg); }
+
+.cta-button {
+  display: block;
+  width: fit-content;
+  padding: 12px 20px;
+  margin: -10px auto 0;
+  font-size: 16px;
+  color: var(--text-main);
+  background-color: transparent;
+  border: 2px solid var(--text-main);
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  transition: .3s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--text-main);
+  color: #fff;
+}
+
+.highlight {
+  font-weight: bold;
+  color: var(--accent-red);
+  margin-bottom: 60px;
+}
+
+.shame-text {
+  width: 100%;
+  margin-top: 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shame-text p {
+  font-style: italic;
+  font-size: .95rem;
+  color: #555;
+  margin: 0 0 5px;
+}
+
+/* =========================
+   Timeline (опыт по годам)
+   ========================= */
+
+.timeline {
+  position: relative;
+  max-width: 1100px;
+  margin: 80px auto 120px;
+  padding: 0 24px;
+}
+
+.timeline__head {
+  padding: 0 5vw;
+  margin: 0 0 20px;
+}
+
+.kicker {
+  font-family: 'Exo 2', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 2.3rem;
+  line-height: 1.3;
+  color: #7a7f86;
+  margin: 20px 0 50px 0px; /* позиционирование под макет */
+}
+
+.timeline__rail {
+  position: absolute;
+  left: 64px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(var(--line-soft-1), var(--line-soft-2));
+  border-radius: 2px;
+}
+
+.timeline__year {
+  position: relative;
+  display: grid;
+  grid-template-columns: 140px 1fr; /* шильдик года + контент */
+  gap: 28px 36px;
+  margin-bottom: 64px;
+}
+
+.timeline__badge {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.timeline__badge img {
+  width: 120px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .06));
+  border-radius: 16px;
+}
+
+/* небольшие выравнивания под конкретные PNG */
+.year-2022 {
+  margin-top: 10px;      
+  margin-left: -240px;   
+}
+.year-2023 {
+  margin-top: 20px;      
+  margin-left: -240px;   
+}
+.year-2024 {
+  margin-top: 6px;      
+  margin-left: -240px;   
+}
+
+.timeline__content {
+  margin-left: 40px;  /* сдвиг вправо от рейла */
+  margin-top: 0;
+}
+
+.timeline__list {
+  margin: 0 0 12px;
+  padding-left: 18px;
+  line-height: 1.55;
+  margin-top: 6px;      
+  margin-left: -140px; 
+}
+
+/* фото слева, reels справа */
+.timeline__media {
+  display: grid;
+  grid-template-columns: minmax(0, 700px) 360px; /* фото (до 700px) + reels */
+  gap: 20px;
+  align-items: start;
+  justify-content: start;
+}
+
+.timeline__media .photo {
+  justify-self: start;
+  width: 135%;
+  max-width: 700px;
+  margin-left: -135px;
+  margin-top: 30px;
+}
+
+.timeline__media .photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.18);
+}
+
+/* Адаптив: в колонку на узких экранах */
+@media (max-width: 900px) {
+  .timeline__media {
+    grid-template-columns: 1fr;
+  }
+  .timeline__media .photo,
+  .reel {
+    max-width: 100%;
+  }
+}
+
+.photo2022 {
+  justify-self: start;
+  max-width: 720px;
+  width: 100%;
+}
+
+.photo2022 img {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+}
+
+.photo2022 figcaption {
+  font-size: .9rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Reels 9:16 */
+.reel {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 9 / 12;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  margin-top: 30px;
+}
+
+.reel iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+/* Сетка для 2 фото */
+.timeline__media {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* два равных столбца */
+  gap: 20px;
+  align-items: start;
+}
+
+/* Базовый стиль фото */
+.timeline__media .photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.18);
+}
+
+/* --- Индивидуальные настройки --- */
+
+/* Левая фотка */
+.photo--left img {
+  max-width: 450px;   /* регулируешь размер */
+  margin-left: 0px;     /* регулируешь отступ слева */
+}
+
+/* Правая фотка */
+.photo--right img {
+  max-width: 450px;   /* регулируешь размер */
+  margin-left: 52px;  /* регулируешь отступ */
+}
+
+/* Одиночная фотография */
+.photo--single img {
+  display: block;
+  width: 100%;
+  max-width: 300px;    /* регулируешь размер */
+  margin: 30px auto;   /* центрируем по горизонтали */
+  margin-left: -150px;  /* регулируешь отступ */
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.18);
+}
+
+
+
+/* =========================
+   Responsive
+   ========================= */
+
+@media (max-width: 900px) {
+  /* hero */
+  .intro {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .avatar {
+    max-width: 80vw;
+    margin: 0 0 40px;
+  }
+
+  .avatar img { width: 100%; }
+
+  .text {
+    max-width: 90vw;
+    margin: 0;             /* в мобильной сетке сдвиги не нужны */
+  }
+
+  /* header small tweaks */
+  .social-icons img { width: 26px; height: 26px; }
+
+  /* timeline */
+  .timeline__year {
+    grid-template-columns: 1fr; /* год сверху, контент ниже */
+    gap: 16px;
+  }
+
+  .timeline__badge { justify-content: flex-start; }
+  .timeline__content { margin-left: 0; }
+
+  .timeline__media {
+    grid-template-columns: 1fr;  /* фото и reels в колонку */
+  }
+
+  .reel { max-width: 100%; }
+}
+
+/* ===== Softskill / Invoker Orbs ===== */
+.softskill{
+  max-width:1100px;margin:80px auto 0;padding:0 5vw;
+}
+.softskill__head .kicker {
+  color: #FFFFFF;
+  font-style: italic;
+  text-align: center;
+  margin: 0 0 40px; /* только снизу — чтобы оторвать от сфер */
+}
+
+/* Сцена с орбитами */
+.orbs{
+  position:relative;
+  width:min(680px,100%);
+  aspect-ratio: 1/1;
+  margin:0 auto 24px;
+}
+.orbs__portrait{
+  position:absolute;inset:50% auto auto 50%;
+  transform:translate(-50%,-50%);
+  width:44%;
+  aspect-ratio:1/1;margin:0;
+  border-radius:50%;
+  box-shadow:0 12px 32px rgba(0,0,0,.18);
+  overflow:hidden;
+}
+.orbs__portrait img{width:100%;height:100%;object-fit:cover}
+
+/* Общие стили сфер (кнопок) */
+.orb{
+  --size:120px;
+  position:absolute;
+  width:var(--size);height:var(--size);
+  border:0;border-radius:50%;
+  cursor:pointer;
+  display:grid;place-items:center;
+  color:#fff;background:#777;
+  box-shadow:0 10px 28px rgba(0,0,0,.22), inset 0 0 24px rgba(255,255,255,.25);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.orb:focus-visible{outline:2px solid #2b2c34;outline-offset:4px}
+.orb:hover{transform:scale(1.05);box-shadow:0 12px 34px rgba(0,0,0,.28), inset 0 0 28px rgba(255,255,255,.3)}
+.orb__label{font-weight:600;letter-spacing:.5px;text-shadow:0 2px 6px rgba(0,0,0,.35)}
+
+/* Позиции на орбите (120% радиуса от центра) */
+.orb--quas { left:50%; top:6%;   transform:translate(-50%,0) }
+.orb--wex  { left:6%;  top:50%;  transform:translate(0,-50%) }
+.orb--exort{ right:6%; top:50%;  transform:translate(0,-50%) }
+
+/* Цвета и «сияние» сфер */
+.orb--quas{
+  background: radial-gradient(120px 120px at 30% 30%, #7ec8ff, #2f63ff 55%, #1e2c7a 90%);
+}
+.orb--wex{
+  background: radial-gradient(120px 120px at 30% 30%, #d39bff, #7f3cff 55%, #3a165e 90%);
+}
+.orb--exort{
+  background: radial-gradient(120px 120px at 30% 30%, #ffc37e, #ff7b00 55%, #7a2a08 90%);
+}
+
+/* Панели c контентом */
+.panels{display:grid;gap:10px; transform: translateY(-130px);}
+.panel{
+  border:1px solid #eee;border-radius:50px;padding:16px 180px;
+  box-shadow:0 8px 18px rgba(0,0,0,.06);
+  background:rgba(255,255,255,.85);backdrop-filter:saturate(140%) blur(2px);
+}
+.panel h3{margin:0 0 8px}
+.panel ul{margin:0 0 8px 18px;line-height:1.55}
+.panel .combo{color:#555;margin:0}
+
+/* Когда панель активна (через JS мы снимаем hidden) — ничего доп. не нужно */
+
+/* Адаптив */
+@media (max-width: 880px){
+  .orb{ --size:100px }
+  .orbs__portrait{ width:52% }
+}
+@media (max-width: 640px){
+  .orbs{ width:min(520px,100%) }
+  .orb{ --size:88px }
+  .orbs__portrait{ width:58% }
+}
+/* Предпочтение уменьшенной анимации */
+@media (prefers-reduced-motion: reduce){
+  .orb{ transition: none; }
+}
+
+/* === Фон для Soft Skills === */
+.softskill {
+  max-width: 1100px;
+  margin: 0 auto;            /* центрируем */
+  padding: 40px 5vw 0;       /* добавляем сверху отступ внутри блока */
+  position: relative;
+}
+
+#softskill::before {
+  content: "";
+  position: absolute;
+  inset: 0;                  /* top:0; right:0; bottom:0; left:0 */
+  background:
+     /* лёгкая вуаль */
+    url("../assets/fonts.jpg") center / cover no-repeat;            /* ВАЖНО: правильный путь */
+  z-index: 0;
+  pointer-events: none;
+}
+
+#softskill > * {
+  position: relative;
+  z-index: 1;                /* контент поверх псевдоэлемента */
+}
+
+.softskill__note {
+  position: absolute;
+  top: 10px;
+  right: -40px;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #ffffff;       /* по умолчанию тусклый серый */
+  opacity: 0.4;      /* почти незаметно */
+  transition: all 0.3s ease;
+  pointer-events: none; /* чтобы текст не мешал клику */
+}
+
+/* При наведении на любую сферу */
+.orb:hover ~ .softskill__note,
+.orbs:hover + .softskill__note {
+  color: #fff;          /* подсветка белым */
+  text-shadow: 0 0 6px rgba(255,255,255,2.8);
+  opacity: 1;
+}
+
+/* Подсветка для сфер */
+/* не трогаем существующий .orb с position:absolute */
+.orb {
+  isolation: isolate;          /* подсветка останется внутри */
+}
+
+/* обводка-подсветка без влияния на размеры/позицию */
+.orb::before {
+  content: "";
+  position: absolute;
+  inset: -4px;                 /* толщина ореола */
+  border-radius: 50%;
+  border: 3px solid transparent;
+  pointer-events: none;
+  transition: border-color .25s ease, box-shadow .25s ease, opacity .25s ease;
+  opacity: 0;
+}
+
+/* цвет подсветки в тон сферы */
+.orb--quas:hover::before  { border-color: rgba(126,200,255,.95); box-shadow: 0 0 18px 4px rgba(126,200,255,.6);  opacity: 1; }
+.orb--wex:hover::before   { border-color: rgba(195,152,255,.95); box-shadow: 0 0 18px 4px rgba(195,152,255,.6); opacity: 1; }
+.orb--exort:hover::before { border-color: rgba(255,154,59,.95);  box-shadow: 0 0 18px 4px rgba(255,154,59,.6);  opacity: 1; }
+
+/* ===== Footer ===== */
+.site-footer{
+  background: radial-gradient(1200px 80px at 50% 0, rgba(255,255,255,.06), transparent 60%) #0f1115;
+  color: #cfd3dc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 16px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  box-shadow: 0 -8px 24px rgba(0,0,0,.22);
+}
+
+.site-footer__sign{
+  margin: 0;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  letter-spacing: .08em;
+  opacity: .9;
+  user-select: none;
+}
+
+/* На очень узких экранах чуть уменьшим размер */
+@media (max-width: 420px){
+  .site-footer{ padding: 28px 12px; }
+  .site-footer__sign{ font-size: .95rem; }
+}
+
+:root{
+  --fab-size: 60px;
+  --fab-bg: #229ED9; /* Telegram */
+  --fab-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+
+.fab{
+  position: fixed;
+  right: max(26px, env(safe-area-inset-right));
+  bottom: calc(max(16px, env(safe-area-inset-bottom)) + 8px);
+  width: var(--fab-size);
+  height: var(--fab-size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--fab-bg);
+  box-shadow: var(--fab-shadow);
+  color: #fff;
+  z-index: 999;
+  text-decoration: none;
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .25s ease, opacity .25s ease, box-shadow .25s ease;
+}
+.fab img{ width: 60%; height: 60%; object-fit: contain; }
+
+.fab--visible{
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.fab:hover{ box-shadow: 0 14px 30px rgba(0,0,0,.32); }
+.fab:focus-visible{ outline: 3px solid #fff; outline-offset: 3px; }
+
+@media (max-width: 420px){
+  :root{ --fab-size: 56px; }
+}
+
+/* если пользователю не нравятся анимации */
+@media (prefers-reduced-motion: reduce){
+  .fab, .fab--visible{ transition: none; }
+}
+
+/* ===== HR Popup ===== */
+/* === HR Popup === */
+.hr-modal {
+  position: fixed;
+  inset: 0;
+  display: none;                /* скрыта по умолчанию */
+  justify-content: center;      /* центр по горизонтали */
+  align-items: center;          /* центр по вертикали */
+  padding: 24px;
+  background: rgba(0,0,0,.65);  /* затемнение фона */
+  backdrop-filter: blur(2px);   /* размытие подложки */
+  z-index: 2000;                /* поверх всего */
+}
+
+.hr-modal--show {
+  display: flex; /* показать модалку */
+}
+
+.hr-modal__card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90vw;   /* ограничение по ширине окна */
+  max-height: 90vh;  /* ограничение по высоте окна */
+  border-radius: 16px;
+}
+
+.hr-modal__img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* чтобы картинка полностью влезала */
+  display: block;
+}
+
+.hr-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(17,17,17,.7);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background .2s ease;
+}
+.hr-modal__close:hover {
+  background: rgba(17,17,17,.9);
+}
