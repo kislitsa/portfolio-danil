@@ -794,3 +794,80 @@ section {
     grid-template-columns: 1fr;
   }
 }
+
+/* ====== MOBILE FIXES (<= 768px) ====== */
+@media (max-width: 768px) {
+
+  /* Сетка с фотографиями: всегда одна колонка и без «хаков» */
+  .timeline__media {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Сбрасываем десктопные width:135%, margin-left:-135px и т.п. */
+  .timeline__media .photo {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .timeline__media .photo img {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 12px;
+  }
+
+  /* На мобиле «левая» и «правая» фотки — просто по ширине экрана */
+  .photo--left img,
+  .photo--right img,
+  .photo--single img {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* Если использовались спец‑классы для 2022/2023/2024 — тоже приводим к норме */
+  .photo2022,
+  .photo2022 img {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* Заголовок и подписи к фото — чуть компактнее */
+  .photo2022 figcaption {
+    font-size: .9rem;
+    margin-top: 8px;
+  }
+
+  /* ---------- Soft Skills ---------- */
+
+  /* Панель с текстом: убираем гигантские боковые отступы */
+  .panel {
+    padding: 16px 20px !important;  /* было 16px 180px */
+    border-radius: 24px;            /* помягче углы в мобилке */
+  }
+
+  /* Глобальный сдвиг панелей вверх делаем мягче */
+  .panels {
+    transform: translateY(-60px) !important; /* было -160px */
+  }
+
+  /* Чуть компактнее заголовок, лучший перенос строк */
+  .panel h3 {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    margin: 0 0 10px;
+  }
+
+  .panel ul {
+    margin: 0 0 10px 18px;
+    line-height: 1.55;
+  }
+}
+
+/* Очень узкие экраны (iPhone SE и т.п.) — ещё немного поджать */
+@media (max-width: 420px) {
+  .panels { transform: translateY(-40px) !important; }
+  .panel  { padding: 14px 16px !important; }
+  .panel h3 { font-size: 1.15rem; }
+}
