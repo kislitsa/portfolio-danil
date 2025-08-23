@@ -871,3 +871,43 @@ section {
   .panel  { padding: 14px 16px !important; }
   .panel h3 { font-size: 1.15rem; }
 }
+/* ====== Years badges on mobile ====== */
+@media (max-width: 768px) {
+  /* Год + контент в одну колонку */
+  .timeline__year{
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Блок с годом вставляем перед контентом и центрируем */
+  .timeline__badge{
+    order: -1;                 /* показать выше текста */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 !important;
+  }
+
+  /* Само изображение года */
+  .timeline__badge img{
+    width: 96px;               /* подстроишь по вкусу */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 6px 14px rgba(0,0,0,.06));
+    border-radius: 16px;
+  }
+
+  /* Убираем десктопные сдвиги, которые уводят картинку за экран */
+  .year-2022,
+  .year-2023,
+  .year-2024{
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+/* Очень узкие экраны — чуть меньше бейдж */
+@media (max-width: 420px) {
+  .timeline__badge img { width: 80px; }
+}
