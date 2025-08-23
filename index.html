@@ -2,36 +2,346 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Портфолио Данила</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,200&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <section>
-    <!-- Плавающие иконки -->
-    <img src="assets/hh.png" alt="HH.ru" class="floating-icon hh-icon" />
-    <img src="assets/fb.png" alt="Facebook" class="floating-icon facebook-icon" />
 
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,200&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Стили -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<script>
+  // клик по сфере — показать/скрыть соответствующую панель
+  document.querySelectorAll('.orb').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.panel;
+      const panel = document.getElementById(id);
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+
+      // сворачиваем все
+      document.querySelectorAll('.orb').forEach(b=>b.setAttribute('aria-expanded','false'));
+      document.querySelectorAll('.panel').forEach(p=>p.hidden = true);
+
+      // раскрываем выбранную, если была закрыта
+      if(!expanded){
+        btn.setAttribute('aria-expanded','true');
+        panel.hidden = false;
+        panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+      }
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const orbs   = document.querySelectorAll('.orb');
+    const panels = document.querySelectorAll('.panel');
+
+    function showPanel(id) {
+      panels.forEach(p => p.hidden = (p.id !== id));
+      orbs.forEach(b => {
+        const active = (b.dataset.panel === id);
+        b.setAttribute('aria-expanded', String(active));
+        b.classList.toggle('is-active', active);
+      });
+    }
+
+    // начальное состояние — показываем QUAS (или любой другой)
+    showPanel('panel-quas');
+
+    // обработчики кликов
+    orbs.forEach(b => {
+      b.addEventListener('click', () => showPanel(b.dataset.panel));
+    });
+  });
+</script>
+
+<a href="https://t.me/ksdanil" class="fab" aria-label="Связаться в Telegram" rel="noopener" target="_blank">
+  <img src="assets/tg.png" alt="" aria-hidden="true" />
+</a>
+
+<script>
+  (function(){
+    const fab = document.querySelector('.fab');
+    const threshold = 500; // показать после 500px скролла
+    function toggle(){
+      if (window.scrollY > threshold) fab.classList.add('fab--visible');
+      else fab.classList.remove('fab--visible');
+    }
+    toggle();
+    window.addEventListener('scroll', toggle, { passive: true });
+  })();
+</script>
+
+
+<!-- HR popup -->
+<div id="hrModal" class="hr-modal" aria-hidden="true" role="dialog" aria-label="Поздравление для HR">
+  <div class="hr-modal__card">
+    <button class="hr-modal__close" type="button" aria-label="Закрыть">×</button>
+    <img class="hr-modal__img" src="assets/hr.png" alt="Для самой лучшей HR">
+  </div>
+</div>
+
+<script>
+(() => {
+  const DELAY_MS = 5000; // через сколько мс показывать
+
+  const modal   = document.getElementById('hrModal');
+  const closeBtn = modal.querySelector('.hr-modal__close');
+
+  const show = () => {
+    modal.classList.add('hr-modal--show');
+    document.body.classList.add('is-locked');
+    modal.setAttribute('aria-hidden', 'false');
+  };
+
+  const hide = () => {
+    modal.classList.remove('hr-modal--show');
+    document.body.classList.remove('is-locked');
+    modal.setAttribute('aria-hidden', 'true');
+  };
+
+  // Показываем каждый раз при загрузке страницы
+  window.addEventListener('load', () => {
+    setTimeout(show, DELAY_MS);
+  });
+
+  // Закрытия
+  closeBtn.addEventListener('click', hide);
+  modal.addEventListener('click', (e) => { if (e.target === modal) hide(); });
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
+})();
+</script>
+
+<body>
+
+  <!-- ======= Шапка сайта ======= -->
+  <header class="site-header">
+    <!-- Центр: навигация -->
+    <div class="nav-wrapper">
+      <nav class="nav" aria-label="Главное меню">
+        <a href="#about">Обо мне</a>
+        <a href="#experience">Опыт</a>
+        <a href="#softskill">Soft Skills</a>
+      </nav>
+    </div>
+
+    <!-- Справа: ссылки -->
+    <div class="social-icons">
+      <a href="https://hh.ru/resume/5b5a54cfff050b27bc0039ed1f327a6c714a64"
+         target="_blank" rel="noopener noreferrer" aria-label="Моё резюме на hh">
+        <img src="assets/hh.png" alt="HH" width="28" height="28" />
+      </a>
+      <a href="https://t.me/ksdanil" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram">
+        <img src="assets/tg.png" alt="Telegram" width="28" height="28" />
+      </a>
+    </div>
+  </header>
+
+  <!-- ======= Первый экран ======= -->
+  <section class="intro" id="about">
     <!-- Аватар -->
     <div class="avatar">
-      <img src="assets/IMG_2342.jpg" alt="Данил" />
+      <img src="assets/IMG_2342.jpg" alt="Данил" loading="eager" />
     </div>
 
     <!-- Текст -->
     <div class="text">
-      <h1>Привет, мой будущий коллега!</h1>
-      <p class="fade-in delay-1">Меня зовут Данил, мне 25 лет<br>Проживаю в IT-столице России - г.Таганрог<br>Рассматриваю удаленный график работы, но к релокейту тоже готов</p>
-      <p class="fade-in delay-2">Мой путь медиабайера начался с 2022 года<br>За плечами — solo-запуски, мини-команда, работа в крупной структуре, рост с junior до байера за 4 месяца в большой тиме.<br>Много где был, много чего пробовал. В следующем блоке постарался тезисно рассказать о своем опыте</p>
-      <p class="fade-in delay-3 highlight">🎯 Хочу быть в команде, где раскрываются идеи, а не только задачи. Где вместе можно вырасти в большее, чем каждый по отдельности.</p>
-      <p class="fade-in delay-4">«Великие дела в бизнесе никогда не совершаются одним человеком. Их совершает команда людей.» — ©Steve Jobs</p>
+      <h1 class="fade-in delay-1">Привет, мой будущий коллега!</h1>
 
-      <div class="shame-text fade-in delay-4">
-        <p>Да, я год запускал схемный трафик…<br>Мне за это немного стыдно.</p>
-        <img src="assets/mimi.jpg" alt="котик" class="cat" />
+      <p class="fade-in delay-2">
+        Меня зовут Данил, мне 25 лет<br />
+        Проживаю в IT–столице России — г. Таганрог<br />
+        Рассматриваю удалённый график работы,<br />
+        но к релокейту тоже готов
+      </p>
+
+      <p class="fade-in delay-3">
+        Мой путь медиабайера начался с 2022 года.<br />
+        За плечами — solo‑запуски, мини‑команда, работа в крупной структуре,<br /> рост с junior до media buyer за 4 месяца. Работа с большим потоком каналов и бюджетами 2-3k$ daily. Запускал кампании в разных вертикалях, тестировал десятки гипотез, постоянно прокачивал навыки.
+      </p>
+
+      <p class="fade-in delay-4 highlight">
+        🚀 Хочу быть в команде, где раскрываются идеи, а не только задачи.<br />
+        Где вместе можно вырасти в большее, чем каждый по отдельности.
+      </p>
+
+      <p class="fade-in delay-5">
+        «Великие дела в бизнесе никогда не совершаются одним человеком.<br />
+        Их совершает команда людей.» — © Steve Jobs
+      </p>
+
+      <!-- Небольшой личный блок -->
+      <div class="shame-text fade-in delay-6">
+        <p>Крайний год я запускал схемный трафик…<br /> Мне за это немного стыдно.</p>
+        <img src="assets/mimi.jpg" alt="котик" class="cat" loading="lazy" />
         <a href="https://t.me/ksdanil" class="cta-button">Взять Даню к себе в команду</a>
       </div>
     </div>
   </section>
+
+  <!-- ======= Хронология (опыт) ======= -->
+  <section class="timeline" id="experience">
+    <!-- Заголовок секции -->
+    <div class="timeline__head">
+      <h2 class="kicker">The path of the media buyer..</h2>
+    </div>
+
+    <!-- Вертикальная направляющая -->
+    <div class="timeline__rail" aria-hidden="true"></div>
+
+    <!-- === 2022 === -->
+    <article class="timeline__year" aria-labelledby="y2022">
+      <div class="timeline__badge year-2022">
+        <img src="assets/2022.png" alt="2022" width="120" height="120" />
+      </div>
+
+      <div class="timeline__content">
+        
+        <ul class="timeline__list">
+          <li>Первое погружение в сферу арбитража трафика</li>
+          <li>Прошел обучение у Артемия Сибирского и практику у Владимира Давыдова CEO Gorgona Media</li>
+          <li>Первые полноценные запуски в нутре (~6 мес), освоил базовую аналитику и работу с трекерами</li>
+        </ul>
+
+        <!-- Медиа-сетка: фото слева, Reels справа -->
+        <div class="timeline__media">
+          <figure class="photo">
+            <img src="assets/2022-photo.jpg" alt="Командное фото (2022)" loading="lazy" />
+             <figcaption>
+    Воркшоп XX-Education с Артемом Сибирским, Максимом Плосконосовым и топ-3 байерами XX-Group
+  </figcaption>
+          </figure>
+
+          <div class="reel" aria-label="Instagram Reels 2022">
+            <iframe
+              src="https://www.instagram.com/reel/Ciulgaqgv77/embed"
+              allowfullscreen
+              allowtransparency="true"
+              frameborder="0"
+              scrolling="no">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- === 2023 === -->
+    <article class="timeline__year" aria-labelledby="y2023">
+      <div class="timeline__badge year-2023">
+        <img src="assets/2023.png" alt="2023" width="120" height="120" />
+      </div>
+
+      <div class="timeline__content">
+        
+        <ul class="timeline__list">
+          <li>Вернулся к заливам после паузы</li>
+          <li>Прошел обучение уже в гемблинг вертикали у команды «BLT» - Owner Илья «Безликий» .<br />Они же познакомили с партнеркой Tesla Traffic (сейчас TSL)</li>
+          <li>Собрал команду из нескольких человек, продолжил после обучения заливать через Tesla</li>
+          <li>Сделали несколько успешных кейсов с ROI 120-150% - 
+           Бразилия, Bons | Чили, MrBet  </li>
+        </ul>
+        <div class="timeline__media">
+<figure class="photo photo--left">
+  <img src="assets/bons.jpg" alt="bons">
+</figure>
+
+<figure class="photo photo--right">
+  <img src="assets/bet.jpg" alt="bet">
+</figure>
+</div>
+      </div>
+    </article>
+
+    <!-- === 2024 === -->
+    <article class="timeline__year" aria-labelledby="y2024">
+      <div class="timeline__badge year-2024">
+        <img src="assets/2024.png" alt="2024" width="120" height="120" />
+      </div>
+
+      <div class="timeline__content">
+       
+        <ul class="timeline__list">
+          <li>В 2024 году присоединился к крупной команде, где получил опыт работы с масштабными рекламными бюджетами.</li>
+          <li>За 4 месяца вырос с позиции Junior до Media Buyer благодаря поддержке опытного тимлида и высокой скорости обучения.</li>
+          <li>Получил системный опыт в запуске и масштабировании рекламных кампаний с большими бюджетами.</li>
+          <li>Запускал и тестировал кампании для нескольких отделов, формировал гипотезы и анализировал результаты.</li>
+          <li>Внедрял AI-автоматизацию в рабочие процессы, что ускоряло тесты и упрощало масштабирование.</li>
+          <li>С июня 2025 года взял бессрочный отпуск</li>
+        </ul>
+        <figure class="photo photo--single">
+  <img src="assets/chl.jpg" alt="chl" loading="lazy">
+</figure>
+      </div>
+    </article>
+  </section>
+
+ <section id="softskill" class="softskill">
+  <div class="softskill__head">
+    <p class="kicker">Soft skills</p>
+    <!-- Сноска -->
+  <div class="softskill__note">*сферы кликабельные</div>
+  </div>
+
+  <div class="orbs">
+    <figure class="orbs__portrait">
+      <img src="assets/invoker-face.png" alt="Портрет: Данил — Invoker‑режим" />
+    </figure>
+
+    <!-- Quas -->
+    <button class="orb orb--quas" aria-expanded="false" data-panel="panel-quas">
+      <span class="orb__label">Quas</span>
+    </button>
+
+    <!-- Wex -->
+    <button class="orb orb--wex" aria-expanded="false" data-panel="panel-wex">
+      <span class="orb__label">Wex</span>
+    </button>
+
+    <!-- Exort -->
+    <button class="orb orb--exort" aria-expanded="false" data-panel="panel-exort">
+      <span class="orb__label">Exort</span>
+    </button>
+  </div>
+
+  <!-- Панели софт‑скиллов -->
+  <div class="panels">
+    <article class="panel" id="panel-quas" hidden>
+      <h3>Quas — коммуникация и стабильность</h3>
+      <ul>
+        <li>Прозрачная коммуникация между PM/креатив/аналитикой</li>
+        <li>Работа с фидбеком: короткие итерации, без токсичности</li>
+        <li>Командная дисциплина: стендапы/ретро, договорённости выполняются</li>
+      </ul>
+      <p class="combo"><strong>Комба Quas+Wex:</strong> кризис‑менеджмент ролику/крео → стабильный CPA за 36 часов</p>
+    </article>
+
+    <article class="panel" id="panel-wex" hidden>
+      <h3>Wex — скорость и гибкость</h3>
+      <ul>
+        <li>Приоритизация гипотез (RICE/влияние на CPA)</li>
+        <li>Тайм‑менеджмент: спринты, чек‑поинты, SLA</li>
+        <li>Адаптивность: быстро под новые ГЕО/политики/источники</li>
+      </ul>
+      <p class="combo"><strong>Комба Wex+Exort:</strong> быстрые тесты → чтение метрик → решение без «метаний»</p>
+    </article>
+
+    <article class="panel" id="panel-exort" hidden>
+      <h3>Exort — аналитика и результат</h3>
+      <ul>
+        <li>Аналитическое мышление: причины, а не симптомы</li>
+        <li>Ownership: веду задачи до измеримого результата</li>
+        <li>Этичность/комплаенс: соблюдение политик площадок</li>
+      </ul>
+      <p class="combo"><strong>Комба Quas+Exort:</strong> межкомандная фича → договорённости → результат в метриках</p>
+    </article>
+  </div>
+</section>
+<footer class="site-footer" id="footer">
+  <p class="site-footer__sign">KD © 2025</p>
+</footer>
+  <div id="projects" hidden></div>
 </body>
 </html>
