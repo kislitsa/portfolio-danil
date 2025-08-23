@@ -361,7 +361,7 @@ section {
 
 
 /* Сетка для 2 фото */
-.timeline__media {
+.timeline__media.two-photos {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* два равных столбца */
   gap: 20px;
@@ -728,4 +728,69 @@ section {
 }
 .hr-modal__close:hover {
   background: rgba(17,17,17,.9);
+}
+
+/* ====== MOBILE FIXES (≤ 768px) ====== */
+@media (max-width: 768px) {
+
+  /* Заголовок раздела */
+  .kicker{
+    font-size: 1.6rem;
+    line-height: 1.25;
+    margin: 8px 0 16px;   /* без больших внешних отступов */
+    text-align: left;
+  }
+
+  .timeline{
+    margin: 40px auto 72px;
+    padding: 0 16px;
+  }
+
+  .timeline__rail{
+    left: 16px;              /* чуть ближе к краю */
+    opacity: .4;
+  }
+
+  .timeline__year{
+    grid-template-columns: 1fr; /* год сверху, контент ниже */
+    gap: 12px 0;
+  }
+
+  .timeline__content{
+    margin-left: 0;          /* убираем сдвиг вправо от рейла */
+    margin-top: 0;
+  }
+
+  .timeline__list{
+    margin: 0;               /* снимаем отрицательный маргин */
+    padding-left: 18px;      /* стандартные маркеры */
+    line-height: 1.5;
+  }
+
+  /* Фото + reels: в колонку, без магических отрицательных отступов */
+  .timeline__media{
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .timeline__media .photo{
+    width: 100%;
+    max-width: none;
+    margin: 0;               /* убираем отрицательный margin-left */
+  }
+
+  .timeline__media .photo img{
+    width: 100%;
+    height: auto;
+  }
+
+  .reel{
+    max-width: 100%;
+    margin: 0;               /* убираем верхние отступы, чтобы не было щелей */
+  }
+
+  /* Вариант именно для блока "две фотографии" */
+  .timeline__media.two-photos{
+    grid-template-columns: 1fr;
+  }
 }
